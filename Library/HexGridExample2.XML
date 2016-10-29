@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HexGridExample2</name>
+    </assembly>
+    <members>
+        <member name="M:PGNapoleonics.HexGridExample2.HexgridExampleForm.System#Windows#Forms#IMessageFilter#PreFilterMessage(System.Windows.Forms.Message@)">
+             <summary>Redirect WM_MouseWheel messages to window under mouse.</summary>
+             <remarks>Redirect WM_MouseWheel messages to window under mouse (rather than 
+             that with focus) with adjusted delta.
+             <a href="http://www.flounder.com/virtual_screen_coordinates.htm">Virtual Screen Coordinates</a>
+             Dont forget to add this to constructor:
+             			Application.AddMessageFilter(this);
+            </remarks>
+             <param name="m">The Windows Message to filter and/or process.</param>
+             <returns>Success (true) or failure (false) to OS.</returns>
+        </member>
+        <member name="F:PGNapoleonics.HexGridExample2.HexgridExampleForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.HexgridExampleForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.HexgridExampleForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.MazeExample.MazeGridHex">
+            <summary>Abstract class for <c>MapGridHex</c> as used in the MazeGrid example.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.MazeGridHex.#ctor(PGNapoleonics.HexUtilities.HexBoard{PGNapoleonics.HexgridPanel.MapGridHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Initializes a new instance of a <see cref="T:PGNapoleonics.HexGridExample2.MazeExample.MazeGridHex"/>.</summary>
+            <param name="board"></param>
+            <param name="coords">Board location of this hex.</param>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.MazeExample.MazeGridHex.ElevationASL">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.MazeExample.PathMazeGridHex">
+            <summary>A <c>MazeGridHex</c> representing a passable hex in the maze.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.PathMazeGridHex.#ctor(PGNapoleonics.HexUtilities.HexBoard{PGNapoleonics.HexgridPanel.MapGridHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Create a new instance of a passable <c>MazeGridHex</c>.</summary>
+            <param name="board">Reference to the mapboard on which this hex sits.</param>
+            <param name="coords">Location of the new hex.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.PathMazeGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.MazeExample.PathMazeGridHex.Elevation">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.MazeExample.PathMazeGridHex.HeightTerrain">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.MazeExample.WallMazeGridHex">
+            <summary>A <c>MazeGridHex</c> representing an impassable hex, or wall, in the maze.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.WallMazeGridHex.#ctor(PGNapoleonics.HexUtilities.HexBoard{PGNapoleonics.HexgridPanel.MapGridHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Create a new instance of an impassable <c>MazeGridHex</c>.</summary>
+            <param name="board">Reference to the mapboard on which this hex sits.</param>
+            <param name="coords">Location of the new hex.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.WallMazeGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.MazeExample.WallMazeGridHex.Elevation">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.MazeExample.WallMazeGridHex.HeightTerrain">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.MazeMap.ElevationASL(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.MazeMap.Heuristic(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.MazeMap.IsPassable(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.MazeExample.MazeMap.PaintUnits(System.Drawing.Graphics)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.WinForms.NativeMethods.WindowFromPoint(System.Drawing.Point)">
+            <summary>P/Invoke declaration for user32.dll.WindowFromPoint</summary>
+            <remarks><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms633558(v=vs.85).aspx"></a></remarks>
+            <param name="pt">(Sign-extended) screen coordinates as a Point structure.</param>
+            <returns>Window handle (hWnd).</returns>
+        </member>
+        <member name="M:PGNapoleonics.WinForms.NativeMethods.SendMessage(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>P/Invoke declaration for user32.dll.SendMessage</summary>
+            <param name="hWnd">Window handle</param>
+            <param name="msg">Windows message</param>
+            <param name="wParam">WParam</param>
+            <param name="lParam">LParam</param>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.Program.Main">
+            <summary>The main entry point for the application.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex">
+            <summary>Abstract class for <c>MapGridHex</c> as used in the TerrainGridHex example.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex.#ctor(PGNapoleonics.HexUtilities.HexBoard{PGNapoleonics.HexgridPanel.MapGridHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Initializes a new instance of a <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/>.</summary>
+            <param name="board"></param>
+            <param name="coords">Board location of this hex.</param>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex.HexBrush">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.ClearTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing clear terrain.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.ClearTerrainGridHex.#ctor(PGNapoleonics.HexUtilities.HexBoard{PGNapoleonics.HexgridPanel.MapGridHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Creates a new instance of a clear <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.ClearTerrainGridHex.Paint(System.Drawing.Graphics)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.FordTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing a river ford.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.FordTerrainGridHex.#ctor(PGNapoleonics.HexUtilities.HexBoard{PGNapoleonics.HexgridPanel.MapGridHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Creates a new instance of a ford <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.FordTerrainGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.FordTerrainGridHex.HexBrush">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.RiverTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing a river (impassable terrain).</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.RiverTerrainGridHex.#ctor(PGNapoleonics.HexUtilities.HexBoard{PGNapoleonics.HexgridPanel.MapGridHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Creates a new instance of a river <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.RiverTerrainGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <summary>This hex type is always impassable.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.RiverTerrainGridHex.HexBrush">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.PikeTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing a pike (ie a major road).</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.PikeTerrainGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.PikeTerrainGridHex.Paint(System.Drawing.Graphics)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.RoadTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing a (secondary) road..</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.RoadTerrainGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.RoadTerrainGridHex.Paint(System.Drawing.Graphics)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.HillTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing elevated terrain.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.HillTerrainGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.HillTerrainGridHex.Elevation">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.HillTerrainGridHex.HexBrush">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.MountainTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing double elevated terrain.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.MountainTerrainGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.MountainTerrainGridHex.Elevation">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.MountainTerrainGridHex.HexBrush">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.TerrainExample.WoodsTerrainGridHex">
+            <summary>A <see cref="T:PGNapoleonics.HexGridExample2.TerrainExample.TerrainGridHex"/> representing forested terrain.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.WoodsTerrainGridHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.WoodsTerrainGridHex.HeightTerrain">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.TerrainExample.WoodsTerrainGridHex.HexBrush">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.TerrainMap.ElevationASL(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.TerrainMap.Heuristic(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexGridExample2.TerrainExample.TerrainMap.PaintUnits(System.Drawing.Graphics)">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexGridExample2.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PGNapoleonics.HexGridExample2.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2065 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HexUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:PGNapoleonics.HexUtilities.Common.BoardStorage`1">
+            <summary>Abstract specification and partial implementation of the <c>BoardStorage</c> required by <c>HexBoard</c>.</summary>
+            <typeparam name="T">The type of the information being stored.</typeparam>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.#ctor(System.Drawing.Size)">
+            <summary>Initializes a new instance with the specified hex extent.</summary>
+            <param name="sizeHexes"></param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.IsOnboard(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns whether the hex with <see cref="T:PGNapoleonics.HexUtilities.HexCoords"/> <c>coords</c> is 
+            within the extent of the board.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.ForEach(System.Action{`0})">
+            <summary>Perform the specified <c>action</c> serially on all hexes.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.ForEach(System.Func{`0,System.Boolean},System.Action{`0})">
+            <summary>Perform the specified <c>action</c> serially on all hexes satisfying <paramref name="predicate"/>/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.ParallelForEach(System.Action{`0})">
+            <summary>Perform the specified <c>action</c> in parallel on all hexes.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.ParallelForEach(System.Func{`0,System.Boolean},System.Action{`0})">
+            <summary>Perform the specified <c>action</c> in parallel on all hexes satisfying <paramref name="predicate"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.Dispose(System.Boolean)">
+            <summary>Anchors the Dispose chain for sub-classes.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.Finalize">
+            <summary>Finalize this instance.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.BoardStorage`1.MapSizeHexes">
+            <summary>Extent in hexes of the board, as a <see cref="T:System.Drawing.Size"/> struct.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.BoardStorage`1.Item(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns the <c>THex</c> instance at the specified coordinates.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.BoardStorage`1.FlatBoardStorage">
+            <summary>A row-major <c>BoardStorage</c> implementation optimized for small maps.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.FlatBoardStorage.#ctor(System.Drawing.Size,System.Func{PGNapoleonics.HexUtilities.HexCoords,`0})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.FlatBoardStorage.ForEach(System.Action{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.FlatBoardStorage.ForEach(System.Func{`0,System.Boolean},System.Action{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.FlatBoardStorage.ParallelForEach(System.Action{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.FlatBoardStorage.ParallelForEach(System.Func{`0,System.Boolean},System.Action{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.BoardStorage`1.FlatBoardStorage.Item(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.BoardStorage`1.BlockedBoardStorage32x32">
+            <summary>A <c>BoardStorage</c> implementation optimized for large maps by blocking 
+            32 x 32 arrays of hexes for improved memory caching.</summary>
+            <remarks>This <c>BoardStorage</c> implementation stores the board cells in blocks
+            that are 32 x 32 cells to provide better localization for the Path-Finding and
+            Field-of-View algorithms.</remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.BlockedBoardStorage32x32.#ctor(System.Drawing.Size,System.Func{PGNapoleonics.HexUtilities.HexCoords,`0})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.BlockedBoardStorage32x32.ForEach(System.Action{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.BlockedBoardStorage32x32.ForEach(System.Func{`0,System.Boolean},System.Action{`0})">
+            <inheritdoc/>>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.BlockedBoardStorage32x32.ParallelForEach(System.Action{`0})">
+            <inheritdoc/>>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.BoardStorage`1.BlockedBoardStorage32x32.ParallelForEach(System.Func{`0,System.Boolean},System.Action{`0})">
+            <inheritdoc/>>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.BoardStorage`1.BlockedBoardStorage32x32.Item(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.CustomCoords">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.CustomCoords.UserToCustom(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.CustomCoords.CustomToUser(PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.CustomCoords.SetMatrices(PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.CustomCoords.SetMatrices(PGNapoleonics.HexUtilities.Common.IntMatrix2D,PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.CustomCoords.MatrixCustomToUser">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.CustomCoords.MatrixUserToCustom">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.TraceFlags">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.None">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.Caching">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.FieldOfView">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.Mouse">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.MouseMove">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.MainForm">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.Initialization">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.Docking">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.MenuEvents">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.KeyEvents">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.Sizing">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.ScrollEvents">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.ToolTipEvents">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.Paint">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.PaintMap">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.PaintDetail">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.FindPathEnqueue">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.FindPathDequeue">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.FindPathDetail">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.TraceFlags.FindPathShortcut">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.DebugTracing">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.DebugTracing.Trace(PGNapoleonics.HexUtilities.Common.TraceFlags,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.DebugTracing.Trace(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.DebugTracing.Trace(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.DebugTracing.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.DebugTracing.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.DebugTracing.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.String)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.DebugTracing.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String)">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.DebugTracing.EnabledFags">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.Extensions">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Extensions.Trace(PGNapoleonics.HexUtilities.Common.TraceFlags,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Extensions.Trace(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Extensions.Trace(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Extensions.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Extensions.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String,System.Object[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Extensions.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.String)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Extensions.LogTime(PGNapoleonics.HexUtilities.Common.TraceFlags,System.Boolean,System.String)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder">
+            <summary>C# (serial) implementation of NPBA* path-finding algorithm by Pijls &amp; Post (Adapted).</summary>
+            <remarks>Adapted to hex-grids, and to weight the most direct path favourably for better (visual) 
+            behaviour on a hexgrid.</remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.FindDirectedPathFwd(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard)">
+            <summary>Returns an <c>IPath</c> for the optimal path from coordinates <c>start</c> to <c>goal</c>.</summary>
+            <param name="start">Coordinates for the <c>last</c> step on the desired path.</param>
+            <param name="goal">Coordinates for the <c>first</c> step on the desired path.</param>
+            <param name="board">An object satisfying the interface <c>INavigableBoardFwd</c>.</param>
+            <remarks>Note that <c>heuristic</c> <b>must</b> be monotonic in order for the algorithm to perform 
+            properly.</remarks>
+            See also: <a href="http://www.cs.trincoll.edu/~ram/cpsc352/notes/astar.html">A* Algorithm Notes</a>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.FindDirectedPathRev(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard)">
+            <summary>As <c>FindDirectedPathFwd</c>, except with the steps stacked in reverse.</summary>
+            <remarks>
+            The path steps are ordered in reverse as the forward half-path has been stacked 
+            onto the reverse half-path during post-processing, instead of the reverse.
+            </remarks>
+            <see cref="M:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.FindDirectedPathFwd(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard)"/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.FindDirectedPath(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,System.Func{PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside,System.Int32},PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection)">
+            <summary>Returns an <c>IPath</c> for the optimal path from coordinates <c>start</c> to <c>goal</c>.</summary>
+            <param name="start">Coordinates for the <c>last</c> step on the desired path.</param>
+            <param name="goal">Coordinates for the <c>first</c> step on the desired path.</param>
+            <param name="stepCost">Cost to extend path by hex at <c>coords</c> from hex at direction <c>hexside</c>.</param>
+            <param name="landmarks"><c>LandmarkCollection</c> of landmarks available for heuristic calculation.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.Preference(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+            <param name="vectorGoal"></param>
+            <param name="vectorHex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.PathfinderFwd">
+            <summary>A <see cref="T:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath"/> from mid-point to goal obtained by searching backwards from goal.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.PathfinderFwd.#ctor(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,System.Func{PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside,System.Int32},PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection,System.Collections.Generic.HashSet{PGNapoleonics.HexUtilities.HexCoords},System.Action{PGNapoleonics.HexUtilities.Pathfinding.DirectedPath,PGNapoleonics.HexUtilities.Pathfinding.DirectedPath},System.Func{System.Int32})">
+            <summary>Create a new instance of <see cref="T:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.PathfinderFwd"/></summary>
+            <param name="start"></param>
+            <param name="goal"></param>
+            <param name="stepCost"></param>
+            <param name="landmarks"></param>
+            <param name="closed"></param>
+            <param name="setBestSoFar"></param>
+            <param name="getBestSoFar"></param>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.PathfinderRev">
+            <summary>A <see cref="T:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath"/> from start to mid-point obtained by searching forwards from start.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.PathfinderRev.#ctor(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,System.Func{PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside,System.Int32},PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection,System.Collections.Generic.HashSet{PGNapoleonics.HexUtilities.HexCoords},System.Action{PGNapoleonics.HexUtilities.Pathfinding.DirectedPath,PGNapoleonics.HexUtilities.Pathfinding.DirectedPath},System.Func{System.Int32})">
+            <summary>Create a new instance of <see cref="T:PGNapoleonics.HexUtilities.Pathfinding.BidirectionalPathfinder.PathfinderRev"/>.</summary>
+            <param name="start"></param>
+            <param name="goal"></param>
+            <param name="stepCost"></param>
+            <param name="landmarks"></param>
+            <param name="closed"></param>
+            <param name="setBestSoFar"></param>
+            <param name="getBestSoFar"></param>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2">
+            <summary>Provides a thread-safe hash set data structure.</summary>
+            <typeparam name="TKey">Specifies the type of elements in the hash set.</typeparam>
+            <typeparam name="TValue">Type of the element value in the hash set.</typeparam>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.#ctor">
+            <summary>Initializes a new instance of the <c>ConcurrentHashSet</c> class.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Initializes a new instance of the <c>ConcurrentHashSet</c> class that 
+            contains elements copied from the specified collection.</summary>
+            <param name="collection">The collection whose elements are copied to the new 
+            <c>ConcurrentHashSet</c>.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.System#Collections#Generic#ISet{TKey}#Add(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.Add(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.Contains(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.CopyTo(`0[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.CopyTo(`0[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.CopyTo(`0[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.CreateSetComparer">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.ExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.IntersectWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.IsProperSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.IsProperSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.IsSubsetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.IsSupersetOf(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.OnDeserialization(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.Overlaps(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.Remove(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.RemoveWhere(System.Predicate{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.SetEquals(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.SymmetricExceptWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.TrimExcess">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.UnionWith(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.Comparer">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.ConcurrentHashSet`2.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2">
+            <summary>Stable (insertion-order preserving for equal-priority elements) PriorityQueue implementation.</summary>
+            <remarks>Eric Lippert's C# implementation of PriorityQueue for use by the A* algorithm.</remarks>
+            <a href="http://blogs.msdn.com/b/ericlippert/archive/2007/10/08/path-finding-using-a-in-c-3-0-part-three.aspx">Path Finding Using A* Part Three</a>
+            <typeparam name="TPriority">Type of the queue-item prioirty.</typeparam>
+            <typeparam name="TValue">Type of the queue-item value.</typeparam>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.IPriorityQueue`2">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IPriorityQueue`2.Any">
+            <summary>Returns whether any elements exist in the heap.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IPriorityQueue`2.Enqueue(`0,`1)">
+            <summary>Creates and adds an entry with the specified <c>priority</c> and <c>value</c> to the queue.></summary>
+            <param name="priority">The <c>TPriority</c> value for the new entry.</param>
+            <param name="value">The <c>TValue</c> value for the new entry.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IPriorityQueue`2.Enqueue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>Adds the specified <c>&lt;HexKeyValuePair></c> to the queue.</summary>
+            <param name="item">The <c>HexKeyValuePair&lt;Tpriority,TValue></c> entry to be added to the queue. </param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IPriorityQueue`2.TryDequeue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}@)">
+            <summary>Returns whether the top queue entry has been successfully stored in <c>result</c> 
+            and removed from the queue.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IPriorityQueue`2.TryPeek(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}@)">
+            <summary>Returns whether the top queue entry has been successfully stored in <c>result</c>.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IPriorityQueue`2.Count">
+            <summary>The number of items in the queue.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.NewQueue">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Any">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Enqueue(`0,`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Enqueue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.TryDequeue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.TryPeek(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Clear">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Clone">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Contains(`1)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.CopyTo(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}[],System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Dequeue">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.GetEnumerator">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Peek">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.ToArray">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.TrimExcess">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.IsSynchronized">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DictionaryPriorityQueue`2.SyncRoot">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.FastList`1">
+            <summary>Adapted implementation of Joe Duffy's Simple (Fast) List enumerator.</summary>
+            <a href="http://www.bluebytesoftware.com/blog/2008/09/21/TheCostOfEnumeratingInNET.aspx">
+            The Cost of Enumeration in DotNet</a>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.IFastEnumerable`1">
+            <remarks>
+            The idea behind IFastEnumerable&lt;TItem> (and specifically IFastEnumerator&lt;TItem>) is to return
+            the current element during the call to MoveNext itself.  This cuts the number of
+            interface method calls necessary to enumerate a list in half.  The impact to performance
+            isn’t huge, but it was enough to cut our overhead from about 3X to 2.3X.  Every little
+            bit counts.
+            </remarks>
+            <typeparam name="TItem"></typeparam>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.IFastEnumerable`1.GetEnumerator">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.IForEachable`1">
+            <summary>Delegated ForEach.</summary>
+            <remarks>
+            The IForEachable&lt;T> interface is a push model in the sense that the caller provides a
+            delegate and the ForEach method is responsible for invoking it once per element in the
+            collection.  ForEach doesn’t return until this is done.  In addition to having far
+            fewer method calls to enumerate a collection, there isn’t a single interface method call.
+            Delegate dispatch is also much faster than interface method dispatch.  The result is
+            nearly twice as fast as the classic IEnumerator&amp;T> pattern (when /o+ isn’t defined).  
+            Now we’re really getting somewhere!
+            </remarks>
+            <typeparam name="TItem"></typeparam>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.IForEachable`1.ForEach(System.Action{`0})">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.IForEachable2`1">
+            <summary>Replaces delegate calls with virtual method calls to a <c>Functor</c> instance.</summary>
+            <remarks>
+            Somebody calling it will pass an instance of the Functor&amp;T> class with the Invoke 
+            method overridden.  The implementation of ForEach then looks quite a bit like 
+            IForEachable&amp;T>’s, just with virtual method calls in place of delegate calls:
+            </remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.IForEachable2`1.ForEach(PGNapoleonics.HexUtilities.Common.FastIterator.FastIteratorFunctor{`0})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.FastList`1.#ctor(`0[])">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.FastList`1.ForEach(System.Action{`0})">
+            <summary>IForEachable&lt;TItem> implementation.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.FastList`1.ForEach(PGNapoleonics.HexUtilities.Common.FastIterator.FastIteratorFunctor{`0})">
+            <summary>IForEachable2&lt;TItem> implementation</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.FastIterator.FastList`1.Item(System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.IFastEnumerator`1">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.IFastEnumerator`1.MoveNext(`0@)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.FastIteratorFunctor`1">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.FastIteratorFunctor`1.Invoke(`0)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.ClassicEnumerable`1">
+            <summary>Implements IEnumerable&amp;TItem> in the standard way:</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.ClassicEnumerable`1.MoveNext">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.ClassicEnumerable`1.Reset">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.ClassicEnumerable`1.Dispose">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.ClassicEnumerable`1.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.ClassicEnumerable`1.Finalize">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.FastIterator.ClassicEnumerable`1.Current">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.FastIterator.FastEnumerable`1">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.FastIterator.FastEnumerable`1.MoveNext(`0@)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.HexCoords">
+            <summary>Coordinate structure for hexagonal grids that abstracts the distinction 
+            between rectangular (User) and canonical (Canon) bases (basis vectors, or reference 
+            frame).</summary>
+            <remarks>
+            An obtuse reference frmae, with basis vectors at 120 degrees, eases most grid 
+            calculations and movement operations; a rectangular reference frmae is easier for 
+            most user interactions, and optimal for board storage. This structure hides the
+            distinction betwene them, and automatically converting from one to the other on 
+            demand (and caching the result).
+            </remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.NewCanonCoords(PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.NewUserCoords(PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.NewCanonCoords(System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.NewUserCoords(System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.GetNeighbour(PGNapoleonics.HexUtilities.Hexside)">
+            <summary>Returns an <c>HexCoords</c> for the hex in direction <c>hexside</c> from this one.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.GetNeighbours">
+            <summary>Returns all neighbouring hexes as IEnumerable.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.GetNeighbours(PGNapoleonics.HexUtilities.HexsideFlags)">
+            <summary>Returns set of hexes at direction(s) specified by <c>hexsides</c>, as IEnumerable.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.Range(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Modified <i>Manhattan</i> distance of supplied coordinate from this one.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.ToString">
+            <inheritDoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.Equals(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.op_Inequality(PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexCoords.op_Equality(PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexCoords.EmptyCanon">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexCoords.EmptyUser">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexCoords.Canon">
+            <summary>Returns an <c>IntVector2D</c> representing the Canonical (obtuse) coordinates of thsi hex.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexCoords.User">
+            <summary>Returns an <c>IntVector2D</c> representing the User (rectangular) coordinates of this hex.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.IHexgridHost">
+            <summary>Interface defining the functionality required of a form or control hosting an instannce of <see cref="T:PGNapoleonics.HexUtilities.Hexgrid"/>.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgridHost.ClientSize">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgridHost.GridSizeF">
+            <summary>Scaled <code>Size</code> of each hexagon in grid, being the 'full-width' and 'full-height'.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgridHost.MapMargin">
+            <summary>Margin of map in pixels.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgridHost.MapScale">
+            <summary>Current scaling factor for map display.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgridHost.MapSizePixels">
+            <summary>Rectangular extent in pixels of the defined mapboard.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgridHost.ScrollPosition">
+            <summary>Returns the current scroll position, as per the <b>WinForms</b> behaviour of <i>AutoScroll</i>.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgridHost.VisibleRectangle">
+            <summary>IUserCoords for the currently visible extent (location &amp; size), as a Rectangle.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.IHexgrid">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IHexgrid.GetHexCoords(System.Drawing.Point,System.Drawing.Size)">
+            <summary><c>HexCoords</c> for the hex at the screen point, with the given AutoScroll position.</summary>
+            <param name="point">Screen point specifying hex to be identified.</param>
+            <param name="autoScroll">AutoScrollPosition for game-display Panel.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IHexgrid.ScrollPositionToCenterOnHex(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns the scroll position to center a specified hex in viewport.</summary>
+            <param name="coordsNewCenterHex"><c>HexCoords</c> for the hex to be centered in viewport.</param>
+            <returns>Pixel coordinates in Client reference frame.</returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IHexgrid.HexCenterPoint(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns ScrollPosition that places given hex in the upper-Left of viewport.</summary>
+            <param name="coordsNewULHex"><c>HexCoords</c> for new upper-left hex</param>
+            <returns>Pixel coordinates in Client reference frame.</returns>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgrid.ScrollPosition">
+            <summary></summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHexgrid.Size">
+            <summary></summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Hexgrid">
+            <summary>C# implementation of the hex-picking algorithm noted below.</summary>
+            <remarks>Mathemagically (left as exercise for the reader) our 'picking' matrices are these, assuming: 
+             - origin at upper-left corner of hex (0,0);
+             - 'straight' hex-axis vertically down; and
+             - 'oblique'  hex-axis up-and-to-right (at 120 degrees from 'straight').</remarks>
+            <a href="file://Documentation/HexGridAlgorithm.mht">Hex-grid Algorithms</a>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hexgrid.#ctor(PGNapoleonics.HexUtilities.IHexgridHost)">
+            <summary>Return a new instance of <c>Hexgrid</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hexgrid.GetHexCoords(System.Drawing.Point,System.Drawing.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hexgrid.ScrollPositionToCenterOnHex(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hexgrid.HexCenterPoint(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hexgrid.GetCoordinate(System.Drawing.Drawing2D.Matrix,System.Drawing.Point)">
+            <summary>Calculates a (canonical X or Y) grid-coordinate for a point, from the supplied 'picking' matrix.</summary>
+            <param name="matrix">The 'picking' matrix</param>
+            <param name="point">The screen point identifying the hex to be 'picked'.</param>
+            <returns>A (canonical X or Y) grid coordinate of the 'picked' hex.</returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hexgrid.HexOrigin(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns the pixel coordinates of the center of the specified hex.</summary>
+            <param name="coords"><see cref="T:PGNapoleonics.HexUtilities.HexCoords"/> specification for which pixel center is desired.</param>
+            <returns>Pixel coordinates of the center of the specified hex.</returns>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hexgrid.ScrollPosition">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hexgrid.Size">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hexgrid.Host">
+            <summary>Scrolling control hosting this HexGrid.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hexgrid.matrixX">
+            <summary>Matrix2D for 'picking' the <B>X</B> hex coordinate</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hexgrid.matrixY">
+            <summary>Matrix2D for 'picking' the <B>Y</B> hex coordinate</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.TransposedHexgrid">
+            <summary>A transposed hexgrid with pointy-top/flat-sides hexes; the rectangular x-axis running 
+            verticallly down; and the rectnaagular y-axis running out to the right from teh upper-left corner 
+            (which remains coordinate (0,0) for both User (rectangular) and Canon (obtuse) coordinate frames.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.TransposedHexgrid.#ctor(PGNapoleonics.HexUtilities.IHexgridHost)">
+            <summary>Returns a <c>TransposedHexgrid</c> instance from the supplied <see cref="T:PGNapoleonics.HexUtilities.IHexgridHost"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.TransposedHexgrid.GetHexCoords(System.Drawing.Point,System.Drawing.Size)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.TransposedHexgrid.HexCenterPoint(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.TransposedHexgrid.ScrollPosition">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.TransposedHexgrid.Size">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Hexside">
+            <summary>Enumeration of the six hexagonal directions.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Hexside.North">
+            <summary>The hexside on the top of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Hexside.Northeast">
+            <summary>The hexside on the upper-right of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Hexside.Southeast">
+            <summary>The hexside on the lower-right of the hex</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Hexside.South">
+            <summary>The hexside on the bottom of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Hexside.Southwest">
+            <summary>The hexside on the lower-left of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Hexside.Northwest">
+            <summary>The hexside on the upper-left of the hex.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.HexsideFlags">
+            <summary>Flags for combinations of the six hexagonal directions.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideFlags.None">
+            <summary>The selection of no hexsides.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideFlags.North">
+            <summary>The hexside on the top of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideFlags.Northeast">
+            <summary>The hexside on the upper-right of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideFlags.Southeast">
+            <summary>The hexside on the lower-right of the hex</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideFlags.South">
+            <summary>The hexside on the bottom of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideFlags.Southwest">
+            <summary>The hexside on the lower-left of the hex.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideFlags.Northwest">
+            <summary>The hexside on the upper-left of the hex.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.HexsideExtensions">
+            <summary>Common <i>extension methods</i> for <c>Hexside</c> and <c>HexSideFlags</c>.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideExtensions.HexsideList">
+            <summary><c>Static List&lt;Hexside></c> for enumerations.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexsideExtensions.HexsideFlagsCollection">
+            <summary>Static List&lt;HexSideFlags> for enumerations.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexsideExtensions.IndexOf(PGNapoleonics.HexUtilities.HexsideFlags)">
+            <summary>The <c>Hexside</c> corresponding to this <c>HexsideFlag</c>, or -1 if it doesn't exist.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexsideExtensions.Direction(PGNapoleonics.HexUtilities.Hexside)">
+            <summary>The <c>HexsideFlag</c> corresponding to this <c>HexSide</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexsideExtensions.Reversed(PGNapoleonics.HexUtilities.Hexside)">
+            <summary>Returns the reversed, or opposite, <c>Hexside</c> to the supplied value.</summary>
+            <param name="this"></param>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.IHex">
+            <summary>External interface exposed by individual hexes.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IHex.Neighbour(PGNapoleonics.HexUtilities.Hexside)">
+            <summary>Returns the neighbouring hex across <c>Hexside</c> <c>hexside</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IHex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <summary>Cost to extend the path with the hex located across the <c>Hexside</c> at <c>direction</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IHex.DirectedStepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <summary>Cost to exit this hex through the <c>Hexside</c> <c>hexsideExit</c>.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHex.Board">
+            <summary>The <c>IBoard&lt;IHex></c> on which this hex is located.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHex.Coords">
+            <summary>The <c>HexCoords</c> coordinates for this hex on <c>Board</c>.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHex.Elevation">
+            <summary>Elevation of this hex in "steps" above the minimum elevation of the board.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHex.ElevationASL">
+            <summary>Elevation "Above Sea Level" in <i>game units</i> of the ground in this hex.</summary>
+            <remarks>Calculated as BaseElevationASL + Elevation * ElevationStep.</remarks>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHex.HeightObserver">
+            <summary>Height ASL in <i>game units</i> of observer's eyes for FOV calculations.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHex.HeightTarget">
+            <summary>Height ASL in <i>game units</i> of target above ground level to be spotted.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IHex.HeightTerrain">
+            <summary>Height ASL in <i>game units</i> of any blocking terrian in this hex.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Hex">
+            <summary>Abstract implementation of the interface <see Cref="IHex"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.#ctor(PGNapoleonics.HexUtilities.IBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.StepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.DirectedStepCost(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.Neighbour(PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Hex.System#IEquatable{PGNapoleonics#HexUtilities#Hex}#Equals(PGNapoleonics.HexUtilities.Hex)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hex.Board">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hex.Coords">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hex.Elevation">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hex.ElevationASL">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hex.HeightObserver">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hex.HeightTarget">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Hex.HeightTerrain">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.HexExtensions">
+            <summary>Extension methods for <see cref="T:PGNapoleonics.HexUtilities.Hex"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexExtensions.GetNeighbourHexes(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.HexsideFlags)">
+            <summary>TODO</summary>
+            <param name="this"></param>
+            <param name="directions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexExtensions.GetAllNeighbours(PGNapoleonics.HexUtilities.IHex)">
+            <summary>All neighbours of this hex, as an <c>IEnumerable&lt;NeighbourHex></c></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexExtensions.GetNeighbourHexes(PGNapoleonics.HexUtilities.IHex)">
+            <summary>All <i>OnBoard</i> neighbours of this hex, as an <c>IEnumerable&lt;NeighbourHex></c></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexExtensions.GetEnumerator(PGNapoleonics.HexUtilities.IHex)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexExtensions.Range(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex)">
+            <summary>The <i>Manhattan</i> distance from this hex to that at <c>coords</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexExtensions.GetDirectedPath(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex)">
+            <summary>Returns a least-cost path from this hex to the hex <c>goal.</c></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexExtensions.IsOnboard(PGNapoleonics.HexUtilities.IHex)">
+            <summary>Returns whether this hex is "On Board".</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.IBoard`1">
+            <summary>External interface exposed by the the implementation of <see cref="T:PGNapoleonics.HexUtilities.HexBoard`1"/>.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard">
+            <summary>Interface required to make use of A* Path Finding utility.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard.StepCost(PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.Hexside)">
+            <summary>The cost of entering the hex at location <c>coords</c> heading <c>hexside</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard.Heuristic(System.Int32)">
+            <summary>Returns an A* heuristic value from the supplied hexagonal Manhattan distance <c>range</c>.</summary>
+            <remarks>Returning the supplied range multiplied by the cheapest movement 
+            cost for a single hex is usually suffficient. Note that <c>heuristic</c> <b>must</b> be monotonic 
+            in order for the algorithm to perform properly and reliably return an optimum path.</remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard.IsOnboard(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns whether the hex at location <c>coords</c>is "on board".</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard.DirectedStepCost(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside)">
+            <summary>Cost to extend path by exiting the hex at <c>coords</c> through <c>hexside</c>.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard.Landmarks">
+            <summary>Returns the collecction of defined landmarks on this board.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard`1">
+            <summary>Interface required to make use of ShadowCasting Field-of-View calculation.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard`1.IsOnboard(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns whether the hex at location <c>coords</c>is "on board".</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard`1.IsPassable(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns whether the hex at location <c>coords</c> is passable.</summary>
+            <param name="coords"></param>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard`1.FovRadius">
+            <summary>Distance in hexes out to which Field-of-View is to be calculated.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard`1.MapSizeHexes">
+            <summary>The rectangular extent of the board's hexagonal grid, in hexes.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard`1.Item(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns the <c>IHex</c> at location <c>coords</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IBoard`1.IsOnboard(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.IBoard`1.ElevationASL(System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IBoard`1.GridSize">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.IBoard`1.RangeCutoff">
+            <summary>Range beyond which Fast PathFinding is used instead of Stable PathFinding.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.HexBoard`1">
+            <summary>Abstract implementation of a hexgrid map-board.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.#ctor(System.Drawing.Size,System.Drawing.Size,System.Func{PGNapoleonics.HexUtilities.HexBoard{`0},PGNapoleonics.HexUtilities.Common.BoardStorage{`0}})">
+            <summary>Initializes the internal contents of <see cref="T:PGNapoleonics.HexUtilities.HexBoard`1"/> with default 
+            landmarks for pathfinding.</summary>
+            <param name="sizeHexes">Extent in hexes of the board being initialized, as a 
+            <see cref="T:System.Drawing.Size"/>.</param>
+            <param name="gridSize">Extent in pixels of the layout grid for the hexagons, as a 
+            <see cref="T:System.Drawing.Size"/>.</param>
+            <param name="initializeBoard">Delegate that creates the <see cref="T:PGNapoleonics.HexUtilities.Common.BoardStorage`1"/> backing
+            store for this instance.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.#ctor(System.Drawing.Size,System.Drawing.Size,System.Func{PGNapoleonics.HexUtilities.HexBoard{`0},PGNapoleonics.HexUtilities.Common.BoardStorage{`0}},System.Collections.ObjectModel.ReadOnlyCollection{PGNapoleonics.HexUtilities.HexCoords})">
+            <summary>Initializes the internal contents of <see cref="T:PGNapoleonics.HexUtilities.HexBoard`1"/> with the specified set of 
+            landmarks for pathfinding.</summary>
+            <param name="sizeHexes">Extent in hexes of the board being initialized, as a 
+            <see cref="T:System.Drawing.Size"/>.</param>
+            <param name="gridSize">Extent in pixels of the layout grid for the hexagons, as a 
+            <see cref="T:System.Drawing.Size"/>.</param>
+            <param name="initializeBoard">Delegate that creates the <see cref="T:PGNapoleonics.HexUtilities.Common.BoardStorage`1"/> backing
+            store for this instance.</param>
+            <param name="landmarkCoords">Collection of <see cref="T:PGNapoleonics.HexUtilities.HexCoords"/> specifying the landmark 
+            locations to be used for pathfinding.</param>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.HexBoard`1.DefaultLandmarks">
+            <summary>By default, landmark all four corners and midpoints of all 4 sides.</summary>
+            <remarks>Pre-processing time on start-up can be reduced by decreasing the number of landmarks,
+            though at the possible expense of longer path-findign times.</remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.Heuristic(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.ElevationASL(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.IsOnboard(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.IsPassable(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.StepCost(PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.DirectedStepCost(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.GetClipInHexes(System.Drawing.RectangleF,System.Drawing.Size)">
+            <summary>Returns the location and extent in hexes, as a <see cref="T:PGNapoleonics.HexUtilities.Common.CoordsRectangle"/>, of the current clipping region.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.SetGridSize(System.Drawing.Size,System.Drawing.Size)">
+            <summary>Sets the board layout parameters</summary>
+            <param name="mapSizeHexes"><c>Size</c> struct of the  board horizontal
+            and vertical extent in hexes.</param>
+            <param name="gridSize"><c>Size</c> struct of the horizontal and vertical
+            extent (in pixels) of the grid on which hexes are to be laid out on.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoard`1.Finalize">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.FovRadius">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.Landmarks">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.RangeCutoff">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.Item(PGNapoleonics.HexUtilities.HexCoords)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.BoardHexes">
+             <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.GridSize">
+             <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.HexgridPath">
+             <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.MapSizeHexes">
+             <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.HexBoard`1.MapSizePixels">
+             <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.HexBoardExtensions">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoardExtensions.GetDirectedPath(PGNapoleonics.HexUtilities.IBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex)">
+            <summary>Returns a least-cost path from the hex <c>start</c> to the hex <c>goal.</c></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoardExtensions.GetDirectedPathAsync(PGNapoleonics.HexUtilities.IBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex)">
+            <summary>Asynchronously returns a least-cost path from the hex <c>start</c> to the hex <c>goal.</c></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoardExtensions.GetFov(PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns the field-of-view on <c>board</c> from the hex specified by coordinates <c>coords</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoardExtensions.GetFieldOfViewAsync(PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoardExtensions.GetFieldOfViewAsync(PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.ShadowCasting.FovTargetMode)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoardExtensions.GetFieldOfView(PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.HexBoardExtensions.GetFieldOfView(PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.ShadowCasting.FovTargetMode)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.ImmutableStackCollection`1">
+            <summary>Eric Lippert's implementation for use in A*.</summary>
+            <remarks>An implementation of immutable stack for use in A* as a 'Path to here'..</remarks>
+            <a href="http://blogs.msdn.com/b/ericlippert/archive/2007/10/04/path-finding-using-a-in-c-3-0-part-two.aspx">Path Finding Using A* Part THree</a>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.ImmutableStackCollection`1.Push(`0)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.ImmutableStackCollection`1.#ctor(`0)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.ImmutableStackCollection`1.#ctor(`0,PGNapoleonics.HexUtilities.Common.ImmutableStackCollection{`0})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.ImmutableStackCollection`1.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.ImmutableStackCollection`1.TopItem">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.ImmutableStackCollection`1.Remainder">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.IntMatrix2D">
+            <summary>Row-major order representation of an immutable integer matrix.</summary>
+            <remarks> Represents Points as row vectors and planes as column vectors.
+            This representation is standard for computer graphics, though opposite 
+            to standard mathematical (and physics) representation, and treats 
+            row vectors as contravariant and column vectors as covariant.</remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.Transpose(PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.#ctor(PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary> Initializes a new <code>IntMatrix2D</code> as the translation defined by the vector v.</summary>
+            <param name="vector">the translation vector</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.#ctor(System.Int32,System.Int32)">
+            <summary> Initializes a new <code>IntMatrix2D</code> as the translation (dx,dy).</summary>
+            <param name="dx">X-translate component</param>
+            <param name="dy">Y-translate component</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary> Initialies a new <code>IntMatrix2D</code> with a rotation.</summary>
+            <param name="m11">X-scale component.</param>
+            <param name="m12">Y-shear component</param>
+            <param name="m21">X-shear component</param>
+            <param name="m22">Y-scale component</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.#ctor(PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>Copy Constructor for a new <code>IntMatrix2D</code>.</summary>
+            <param name="m">Source IntegerMatrix</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Initializes a new fully-specificed <code>IntMatrix2D</code> .</summary>
+            <param name="m11">X-scale component.</param>
+            <param name="m12">Y-shear component</param>
+            <param name="m21">X-shear component</param>
+            <param name="m22">Y-scale component</param>
+            <param name="dx">X-translate component</param>
+            <param name="dy">Y-translate component</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Initializes a new fully-specificed non-normed <code>IntMatrix2D</code>.</summary>
+            <param name="m11">X-scale component.</param>
+            <param name="m12">Y-shear component</param>
+            <param name="m21">X-shear component</param>
+            <param name="m22">Y-scale component</param>
+            <param name="dx">X-translate component</param>
+            <param name="dy">Y-translate component</param>
+            <param name="norm">Normalization component</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.op_Multiply(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>(Contravariant) Vector application.</summary>
+            <param name="v">IntVector2D to be transformed.</param>
+            <param name="m">IntMatrix2D to be applied.</param>
+            <returns>New IntVector2D resulting from application of this matrix to vector v.</returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.op_Multiply(PGNapoleonics.HexUtilities.Common.IntMatrix2D,PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>Matrix multiplication.</summary>
+            <param name="m1">Prepended transformation.</param>
+            <param name="m2">Appended transformation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.Multiply(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>Returns the result of applying the (row) vector <c>v</c> to the matrix <c>m</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.Multiply(PGNapoleonics.HexUtilities.Common.IntMatrix2D,PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <summary>Returns the <c>IntMatrix2D</c> representing the transformation <c>m1</c> composed with <c>m2</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.Rotate(PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Vector Rotation (only).</summary>
+            <param name="v">IntVector2D to be rotated.</param>
+            <returns>New IntVector2D resulting from rotaion (only) of vector v by this matrix 
+            (ignoring any translation components of this matrix).</returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.op_Inequality(PGNapoleonics.HexUtilities.Common.IntMatrix2D,PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.op_Equality(PGNapoleonics.HexUtilities.Common.IntMatrix2D,PGNapoleonics.HexUtilities.Common.IntMatrix2D)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntMatrix2D.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.M11">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.M12">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.M21">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.M22">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.M31">
+            <summary>TODO</summary>
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.M32">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.M33">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntMatrix2D.Identity">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.IntVector2D">
+            <summary>Representation of an immutable integer 2D vector.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.Common.IntVector2D.Empty">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.#ctor(System.Drawing.Point)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.#ctor(System.Drawing.Size)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.#ctor(PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.#ctor(System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Normalize">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Multiply(System.Int32,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Scalar Multiplication into a new IntegerVector2D.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Multiply(PGNapoleonics.HexUtilities.Common.IntVector2D,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Division(PGNapoleonics.HexUtilities.Common.IntVector2D,System.Int32)">
+            <summary>Scalar Division into a new IntegerVector2D.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Division(PGNapoleonics.HexUtilities.Common.IntVector2D,System.Single)">
+            <summary>Scalar Division into a new IntegerVector2D.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Multiply(System.Int32,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Multiply(PGNapoleonics.HexUtilities.Common.IntVector2D,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Divide(PGNapoleonics.HexUtilities.Common.IntVector2D,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Divide(PGNapoleonics.HexUtilities.Common.IntVector2D,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Multiply(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Scalar (Inner, or Dot) Product of two <code>IntVector2D</code> as an Int32.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_ExclusiveOr(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Z component of the 'Vector'- or Cross-Product of two <code>IntVector2D</code>s</summary>
+            <returns>A pseudo-scalar (it reverses sign on exchange of its arguments).</returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Addition(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Vector Addition of two <code>IntVector2D</code> as a new <code>IntVector2D</code>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Subtraction(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Vector Subtraction of two <code>IntVector2D</code> as a new <code>IntVector2D</code></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Add(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Vector Addition of two <code>IntVector2D</code> as a new <code>IntVector2D</code>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Subtract(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>Vector Subtraction of two <code>IntVector2D</code> as a new <code>IntVector2D</code></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.InnerProduct(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.CrossProduct(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Implicit(System.Drawing.Point)~PGNapoleonics.HexUtilities.Common.IntVector2D">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Implicit(System.Drawing.Size)~PGNapoleonics.HexUtilities.Common.IntVector2D">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Implicit(PGNapoleonics.HexUtilities.Common.IntVector2D)~System.Drawing.Point">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Implicit(PGNapoleonics.HexUtilities.Common.IntVector2D)~System.Drawing.Size">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Inequality(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.op_Equality(PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.IntVector2D.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntVector2D.X">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntVector2D.Y">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.IntVector2D.W">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.NeighbourCoords">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourCoords.#ctor(PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.Hexside)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourCoords.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourCoords.Bind``1(System.Func{PGNapoleonics.HexUtilities.HexCoords,``0})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourCoords.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourCoords.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourCoords.op_Inequality(PGNapoleonics.HexUtilities.Common.NeighbourCoords,PGNapoleonics.HexUtilities.Common.NeighbourCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourCoords.op_Equality(PGNapoleonics.HexUtilities.Common.NeighbourCoords,PGNapoleonics.HexUtilities.Common.NeighbourCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.NeighbourCoords.Hexside">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.NeighbourCoords.Coords">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.NeighbourHex">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.#ctor(PGNapoleonics.HexUtilities.IHex)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.#ctor(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.HexsideFlags)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.#ctor(PGNapoleonics.HexUtilities.IHex,System.Nullable{PGNapoleonics.HexUtilities.Hexside})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.op_Inequality(PGNapoleonics.HexUtilities.Common.NeighbourHex,PGNapoleonics.HexUtilities.Common.NeighbourHex)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.NeighbourHex.op_Equality(PGNapoleonics.HexUtilities.Common.NeighbourHex,PGNapoleonics.HexUtilities.Common.NeighbourHex)">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.NeighbourHex.Hex">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.NeighbourHex.HexsideEntry">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.NeighbourHex.HexsideExit">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.NeighbourHex.HexsideIndex">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1">
+            <summary>Heap-On-Top (HOT) Priority Queue implementation with a key of type <c>int</c>.</summary>
+            <typeparam name="TValue">Type of the queue-item value.</typeparam>
+            <remarks>
+            
+            </remarks>
+            <a href="http://en.wikipedia.org/wiki/Heapsort">Wikepedia - Heapsort</a>/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.#ctor">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.#ctor(System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.Any">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.Enqueue(System.Int32,`0)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.Enqueue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{System.Int32,`0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.TryDequeue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{System.Int32,`0}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.TryPeek(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{System.Int32,`0}@)">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueue`1.PoolSize">
+            <summary>The number of elements which are handled by a straight HeapPriorityQueue.</summary>
+            <remarks>
+            When the number of elements exceeds this value, additional lists are created 
+            to handle the overflow elements of lower priority (higher <c>TKey</c> values.
+            </remarks>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2">
+            <summary>Heap-On-Top (HOT) Priority Queue implementation.</summary>
+            <typeparam name="TKey">Struct type for the keys used to prioritize values..</typeparam>
+            <typeparam name="TValue">Type of the queue elements.</typeparam>
+            <remarks>
+            
+            </remarks>
+            <a href="http://en.wikipedia.org/wiki/Heapsort">Wikepedia - Heapsort</a>/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.#ctor(System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.Add(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.Contains(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.CopyTo(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}[],System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.Remove(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.Count">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.IsReadOnly">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.PriorityQueue">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap">
+            <summary>List implementation of a binary MinHeap PriorityQueue.</summary>    
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.#ctor">
+            <summary>Construct a new heap with default capacity of 16.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.#ctor(System.Int32)">
+            <summary>Construct a new heap with the specified capacity.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.Any">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.Clear">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.Enqueue(`0,`1)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.Enqueue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.TryDequeue(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.TryPeek(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1}@)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.MinHeapifyDown(System.Int32)">
+            <summary>Min-Heapify by sifting-down from last parent in heap.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HotPriorityQueueList`2.MinListHeap.Count">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.#ctor(`0,`1)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.CompareTo(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.Equals(System.Object)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.GetHashCode">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.op_Equality(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1},PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.op_Inequality(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1},PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.op_LessThan(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1},PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.op_LessThanOrEqual(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1},PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.op_GreaterThanOrEqual(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1},PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.op_GreaterThan(PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1},PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair{`0,`1})">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.Key">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.HexKeyValuePair`2.Value">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection">
+            <summary>A <b>ReadOnlyCollection</b> of defined <see cref="T:PGNapoleonics.HexUtilities.Pathfinding.Landmark"/> locations.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection.CreateLandmarks(PGNapoleonics.HexUtilities.IBoard{PGNapoleonics.HexUtilities.IHex},System.Collections.Generic.IList{PGNapoleonics.HexUtilities.HexCoords})">
+            <summary>Creates a populated <see cref="T:System.Collections.ObjectModel.Collection`1"/> of <see cref="T:PGNapoleonics.HexUtilities.Pathfinding.Landmark"/>
+            instances.</summary>
+            <param name="board">The board on which the collection of landmarks is to be instantiated.</param>
+            <param name="landmarkCoords">Board coordinates of the desired landmarks</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection.Finalize">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollectionExtensions">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollectionExtensions.ResetLandmarks(PGNapoleonics.HexUtilities.Pathfinding.LandmarkCollection,PGNapoleonics.HexUtilities.IBoard{PGNapoleonics.HexUtilities.IHex})">
+            <summary>(Re)calculates distances for all landmarks using the provided IBoard&lt;IHex&gt; definition.</summary>
+            <param name="this">The </param>
+            <param name="board">The </param>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.Landmark">
+            <summary>A board location storing shortest-path distances to every board hex.</summary>
+            <remarks>A board location that stores shortest-path distances for every board hex, for use in 
+            computing an accurate A* heuristic. A simple Dijkstra implementation is used to generate the 
+            distances upon creation.</remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.Landmark.#ctor(PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.IBoard{PGNapoleonics.HexUtilities.IHex})">
+            <summary>Populates and returns a new landmark at the specified board coordinates.</summary>
+            <param name="board">IBoard{IHex} on which the landmark is to be created.</param>
+            <param name="coords">Coordinates on <c>board</c> where this landmark is to be created.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.Landmark.HexDistance(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>Returns the shortest-path directed-distance from the specified hex to the landmark.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.Landmark.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.Landmark.Finalize">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.Landmark.Coords">
+            <summary>Board coordinates for the landmark location.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.PointExtensions">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.PointExtensions.Scale(System.Drawing.Point,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.PointExtensions.Scale(System.Drawing.Point,System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.PointExtensions.Scale(System.Drawing.Point,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.PointExtensions.Scale(System.Drawing.Point,System.Single,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.PointExtensions.Scale(System.Drawing.PointF,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.PointExtensions.Scale(System.Drawing.PointF,System.Single,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath">
+            <summary>Structure returned by the A* Path Finding utility.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath.HexsideExit">
+            <summary>The <see cref="T:PGNapoleonics.HexUtilities.Hexside"/> through which an agent must move in taking the first step of this path.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath.StepCoords">
+            <summary>The coordinates of the first step on this path.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath.TotalCost">
+            <summary>The total movement cost for this path.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath.TotalSteps">
+            <summary>The total number of movement steps for this path.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath.PathStep">
+            <summary>The first step on this path.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath.PathSoFar">
+            <summary>The remaining steps of this path, as an <see cref="T:PGNapoleonics.HexUtilities.Pathfinding.IDirectedPath"/> instance.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.AddStep(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside,System.Int32)">
+            <summary>TODO</summary>
+            <param name="hex"></param>
+            <param name="hexside"></param>
+            <param name="stepCost"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.AddStep(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside,System.Int32,System.Int32)">
+            <summary>TODO</summary>
+            <param name="hex"></param>
+            <param name="hexside"></param>
+            <param name="stepCost"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.AddStep(PGNapoleonics.HexUtilities.Common.NeighbourHex,System.Int32)">
+            <summary>TODO</summary>
+            <param name="neighbour"></param>
+            <param name="stepCost"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.AddStep(PGNapoleonics.HexUtilities.Common.NeighbourHex,System.Int32,System.Int32)">
+            <summary>TODO</summary>
+            <param name="neighbour"></param>
+            <param name="stepCost"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.ToString">
+            <summary>TODO</summary>
+            <returns></returns>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.GetEnumerator">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.#ctor(PGNapoleonics.HexUtilities.IHex)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.#ctor(PGNapoleonics.HexUtilities.Pathfinding.DirectedPath,PGNapoleonics.HexUtilities.Common.NeighbourHex,System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.HexsideExit">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.Key">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.PathSoFar">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.PathStep">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.StepCoords">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.TotalCost">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Pathfinding.DirectedPath.TotalSteps">
+            <inheritdoc/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Pathfinding.UnidirectionalPathfinder">
+             <summary>(Adapted) C# implementation of A* path-finding algorithm by Eric Lippert.</summary>
+             <remarks>
+             "A nice property of the A* algorithm is that it finds the optimal path in a reasonable 
+             amount of time provided that:
+               • the estimating function never overestimates the distance to the goal. 
+                 (Think about what happens if the estimating function sometimes overestimates the distance;
+                 if the optimal path is one of the ones overestimated then it will possibly not make it to 
+                 the front of the priority queue before a nonoptimal solution is found.)
+               • calling the estimating function does not take very long.
+               
+             "One way to ensure that the estimating function never overestimates the distance is to always 
+             estimate zero. If you do so then this becomes Dijkstra's algorithm. However, the better your 
+             estimating function can get without going over (this really should have been called the 
+             "The Price Is Right" algorithm...) the faster this will identify the truly optimal path.
+            
+             "Unfortunately, the space complexity of this algorithm can be really quite high on complicated 
+             graphs. There are more complex versions of this algorithm which can deal with the space complexity."
+             <a href="http://blogs.msdn.com/b/ericlippert/archive/2007/10/10/path-finding-using-a-in-c-3-0-part-four.aspx"></a>
+             
+             Adapted to hex-grids, and to weight the most direct path favourably for better (visual) 
+             behaviour on a hexgrid.
+             </remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.UnidirectionalPathfinder.FindDirectedPathFwd(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Pathfinding.IDirectedNavigableBoard)">
+            <seealso cref="!:http://www.cs.trincoll.edu/~ram/cpsc352/notes/astar.html"/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Pathfinding.UnidirectionalPathfinder.FindDirectedPathFwd(PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.IHex,System.Func{PGNapoleonics.HexUtilities.IHex,PGNapoleonics.HexUtilities.Hexside,System.Int32},System.Func{System.Int32,System.Int32})">
+            <seealso cref="!:http://www.cs.trincoll.edu/~ram/cpsc352/notes/astar.html"/>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.IFov">
+            <summary>Structure returned by the Field-of-View factory.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.IFov.Item(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>True if the hex at location <c>coords</c>c> is visible in this field-of-view.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.ArrayFieldOfView">
+            <summary>Implementation of IFov using a backing array of BitArray.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.FovTargetMode">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.ShadowCasting.FovTargetMode.EqualHeights">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.ShadowCasting.FovTargetMode.TargetHeightEqualZero">
+            <summary>TODO</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.ShadowCasting.FovTargetMode.TargetHeightEqualActual">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.FovFactory">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovFactory.GetFieldOfView(PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovFactory.GetFieldOfView(PGNapoleonics.HexUtilities.ShadowCasting.IFovBoard{PGNapoleonics.HexUtilities.IHex},PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.ShadowCasting.FovTargetMode)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.FovCone">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.#ctor(System.Int32,PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.Common.IntVector2D,PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.ToString">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.System#IEquatable{PGNapoleonics#HexUtilities#ShadowCasting#FovCone}#Equals(PGNapoleonics.HexUtilities.ShadowCasting.FovCone)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.op_Inequality(PGNapoleonics.HexUtilities.ShadowCasting.FovCone,PGNapoleonics.HexUtilities.ShadowCasting.FovCone)">
+            <summary>Tests value-equality of two <c>FovCone</c> instances.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.op_Equality(PGNapoleonics.HexUtilities.ShadowCasting.FovCone,PGNapoleonics.HexUtilities.ShadowCasting.FovCone)">
+            <summary>Tests value-inequality of two <c>FovCone</c> instances.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.Range">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.RiseRun">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.VectorBottom">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.FovCone.VectorTop">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.FovQueue">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovQueue.Dequeue">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.FovQueue.Enqueue(PGNapoleonics.HexUtilities.ShadowCasting.FovCone)">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.FovQueue.Count">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.#ctor(System.Int32,System.Int32)">
+            <summary>Creates a new instance of the RiseRUn struct.</summary>
+            <param name="rise"></param>
+            <param name="run"></param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.op_LessThan(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun,PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.op_LessThanOrEqual(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun,PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.op_GreaterThan(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun,PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.op_GreaterThanOrEqual(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun,PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.op_Equality(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun,PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.op_Inequality(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun,PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.Equals(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.CompareTo(PGNapoleonics.HexUtilities.ShadowCasting.RiseRun)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.Equals(System.Object)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.GetHashCode">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.Rise">
+            <summary>Delta-height in units of elevation: meters.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.ShadowCasting.RiseRun.Run">
+            <summary>Delta-width in units of distance:  hexes.</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting">
+            <summary>Credit: Eric Lippert</summary>
+            <a href="http://blogs.msdn.com/b/ericlippert/archive/2011/12/29/shadowcasting-in-c-part-six.aspx">Shadow Casting in C# Part Six</a>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting.ComputeFieldOfView(PGNapoleonics.HexUtilities.HexCoords,System.Int32,System.Int32,System.Func{PGNapoleonics.HexUtilities.HexCoords,System.Boolean},System.Func{PGNapoleonics.HexUtilities.HexCoords,System.Int32},System.Func{PGNapoleonics.HexUtilities.HexCoords,System.Int32},System.Action{PGNapoleonics.HexUtilities.HexCoords})">
+            <summary></summary>
+            <remarks>
+            Takes a circle in the form of a center point and radius, and a function
+            that can tell whether a given cell is opaque. Calls the setFoV action on
+            every cell that is both within the radius and visible from the center. 
+            </remarks>
+            <param name="observerCoords">Cordinates of observer;s hex.</param>
+            <param name="radius">Maximum radius for Field-of-View.</param>
+            <param name="observerHeight">Height (ASL) of the observer's eyes.</param>
+            <param name="isOnBoard">Is this hex on the baoard.</param>
+            <param name="targetHeight">Returns ground level (ASL) of supplied hex.</param>
+            <param name="terrainHeight">Returns height (ASL) of terrain in supplied hex.</param>
+            <param name="setFieldOfView">Sets a hex as visible in the Field-of-View.</param>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting.ComputeFoVForRange(System.Int32,PGNapoleonics.HexUtilities.ShadowCasting.FovCone,System.Func{PGNapoleonics.HexUtilities.HexCoords,System.Boolean},System.Func{PGNapoleonics.HexUtilities.HexCoords,System.Int32},System.Func{PGNapoleonics.HexUtilities.HexCoords,System.Int32},System.Action{PGNapoleonics.HexUtilities.HexCoords},PGNapoleonics.HexUtilities.ShadowCasting.FovQueue)">
+             <summary></summary>
+             <param name="observerHeight"></param>
+             <param name="cone"></param>
+             <param name="isOnBoard"></param>
+             <param name="targetHeight"></param>
+             <param name="terrainHeight"></param>
+             <param name="setFieldOfView"></param>
+             <param name="queue"></param>
+             <returns></returns>
+            <remarks>
+             This method: 
+             (1) marks points inside the cone-arc that are within the radius of the field 
+                 of view; and 
+             (2) computes which portions of the following column are in the field of view, 
+                 queueing them for later processing. 
+            
+             This algorithm is "center-to-center"; a more sophisticated algorithm 
+             would say that a cell is visible if there is *any* straight line segment that 
+             passes through *any* portion of the origin cell and any portion of the target 
+             cell, passing through only transparent cells along the way. This is the 
+             "Permissive Field Of View" algorithm, and it is much harder to implement.
+            
+             Search for transitions from opaque to transparent or transparent to opaque and 
+             use those to determine what portions of the *next* column are visible from the 
+             origin.
+            </remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting.BuildDodecantMatrices">
+            <summary>Build dodecant matrices from sextant matrices and reflection about theta=30.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting.matrixHexTop">
+            <summary>Helper matrix for <c>VectorHexTop</c>.</summary>
+        </member>
+        <member name="F:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting.matrixHexBottom">
+            <summary>Helper matrix for <c>VectorHexBottom</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting.VectorHexTop(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>IntVector2D for top corner of cell Canon(x,y).</summary>
+            <remarks>
+            In first dodecant; The top corner for hex (x,y) is determined 
+            (from close visual inspection) as:
+                  (x,y) + 1/3 * (2,1)
+            which reduces to:
+                  (x + 2/3, y + 1/3) == 1/3 * (3x + 2, 3y + 1)
+            </remarks>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.ShadowCasting.ShadowCasting.VectorHexBottom(PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>IntVector2D for bottom corner of cell Canon(x,y).</summary>
+            <remarks>
+            In first dodecant; The bottom corner for hex (x,y) is determined 
+            (from close visual inspection) as:
+                  (x,y) + 1/3 * (-2,-1)
+            which reduces to:
+                  (x - 2/3, y - 1/3) == 1/3 * (3x - 2, 3y - 1)
+            </remarks>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.SizeExtensions">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.SizeExtensions.Scale(System.Drawing.Size,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.SizeExtensions.Scale(System.Drawing.Size,System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.SizeExtensions.Scale(System.Drawing.Size,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.SizeExtensions.Scale(System.Drawing.Size,System.Single,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.SizeExtensions.Scale(System.Drawing.SizeF,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.SizeExtensions.Scale(System.Drawing.SizeF,System.Single,System.Single)">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.CoordsRectangle">
+            <summary>Stores a rectangular board region as a a location and extent of <see cref="T:PGNapoleonics.HexUtilities.HexCoords"/>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.CoordsRectangle.#ctor(PGNapoleonics.HexUtilities.HexCoords,PGNapoleonics.HexUtilities.HexCoords)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.CoordsRectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.CoordsRectangle.#ctor(System.Drawing.Rectangle)">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.CoordsRectangle.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.CoordsRectangle.op_Equality(PGNapoleonics.HexUtilities.Common.CoordsRectangle,PGNapoleonics.HexUtilities.Common.CoordsRectangle)">
+            <summary>Tests value equality of two CoordsRectangle instances.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.CoordsRectangle.op_Inequality(PGNapoleonics.HexUtilities.Common.CoordsRectangle,PGNapoleonics.HexUtilities.Common.CoordsRectangle)">
+            <summary>Tests value inequality of two CoordsRectangle instances.</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Bottom">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Height">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.IsEmpty">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Left">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Location">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Right">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Size">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Top">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Width">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.X">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Y">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.Rectangle">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.UpperLeft">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.UpperRight">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.LowerLeft">
+            <summary>TODO</summary>
+        </member>
+        <member name="P:PGNapoleonics.HexUtilities.Common.CoordsRectangle.LowerRight">
+            <summary>TODO</summary>
+        </member>
+        <member name="T:PGNapoleonics.HexUtilities.Common.Utilities">
+            <summary>TODO</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Utilities.EnumGetValues``1">
+            <summary>Typesafe wrapper for <c>Enum.GetValues(typeof(TEnum).</c></summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Utilities.ParseEnum``1(System.String)">
+            <summary>Typesafe wrapper for <c>Enum.ParseEnum()</c> that automatically checks 
+            constants for membership in the <c>enum</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Utilities.ParseEnum``1(System.String,System.Boolean)">
+            <summary>Typesafe wrapper for <c>Enum.ParseEnum()</c> that automatically checks 
+            constants for membership in the <c>enum</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Utilities.TryParseEnum``1(System.String,``0@)">
+            <summary>Typesafe wrapper for <c>Enum.TryParseEnum()</c> that automatically checks 
+            constants for membership in the <c>enum</c>.</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Utilities.EnumParse``1(System.Char,System.String)">
+            <summary>Typesafe wrapper for <c>Enum.ToObject()</c>.</summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Utilities.ThrowInvalidDataException(System.Reflection.MemberInfo,System.Object)">
+            <summary>Deprecated</summary>
+        </member>
+        <member name="M:PGNapoleonics.HexUtilities.Common.Utilities.ThrowInvalidDataException(System.String,System.Int32,System.Object,System.String,System.Exception,System.Object)">
+             <summary>Deprecated:</summary>
+        </member>
+    </members>
+</doc>

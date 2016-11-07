@@ -241,6 +241,8 @@ public class GameMaster : MonoBehaviour {
 			if (HexGrid [placex, placey] != 2) {
 				Transform PlayerShip = Instantiate (playershipspawn);
 				Vector3 xy = TileGrid [placex, placey];
+				xy.x -= 0.07f;
+				xy.y += 0.03999f;
 				PlayerShip.transform.Translate (xy);
 				playerObjects [0] = PlayerShip;
 				placed = true;
@@ -249,7 +251,7 @@ public class GameMaster : MonoBehaviour {
 				placey = Random.Range (0, hexSize); 
 			}
 		}
-		playerObjects.get
+		//playerObjects.get
 	}
 
 }

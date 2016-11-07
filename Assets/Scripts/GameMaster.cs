@@ -16,9 +16,15 @@ public class GameMaster : MonoBehaviour {
 	public Vector3[,] TileGrid;
 	public Transform[,] FogGrid;
 
+	//holds all the transform for the hexgrid
 	public Transform[] sea_RoughPrefab;
 	public Transform[] sea_CalmPrefab;
 	public Transform[] grass_DirtPrefab;
+
+	//an array to hold all player objects
+	public Transform[] playerObjects;
+	//an array of different ships to use as new ships
+	public Transform playershipspawn;
 
 	public Transform fog; //gameobject to hold the fog sprites
 	public Sprite fogs; //havn't explored/seen yet
@@ -28,10 +34,12 @@ public class GameMaster : MonoBehaviour {
 
 	public bool FogOfWarOn = false;
 
+	//Values that set the number of islands to make; the max and min size of each island
 	public int numberOfIslands;
 	public int minSizeOfIslands;
 	public int maxSizeOfIslands;
 
+	//sets the max distance in tiles the shallows of water from a mass of land can be placed
 	public int minSizeOfShallows;
 	public int maxSizeOfShallows;
 
@@ -47,14 +55,17 @@ public class GameMaster : MonoBehaviour {
 		// Fill Hex with map tiles corresponding to integer values
 		PopulateHex ();
 
+		//place the player onto the map
+		placePlayer();
+
 		//sets the basic visablility to 0 on start up (fog should be all up)
 		if (FogOfWarOn) {
 			for (int x = 0; x < hexSize; x++) {
 				for (int y = 0; y < hexSize; y++) {
+					if(playerObjects[0].position.x == TileGrid[x,y].x)
 					visable [x, y] = 0;
 					FogGrid [x, y] = Instantiate (fog);
 					Vector3 xv = TileGrid [x, y];
-					xv.z = -1;
 					FogGrid [x, y].position = xv;
 
 					}
@@ -219,4 +230,26 @@ public class GameMaster : MonoBehaviour {
 
 		}
 	}
+
+
+
+	void placePlayer() {
+		int placex = Random.Range (0, hexSize);
+		int placey = Random.Range (0, hexSize);
+		bool placed = false;
+		while (!placed) {
+			if (HexGrid [placex, placey] != 2) {
+				Transform PlayerShip = Instantiate (playershipspawn);
+				Vector3 xy = TileGrid [placex, placey];
+				PlayerShip.transform.Translate (xy);
+				playerObjects [0] = PlayerShip;
+				placed = true;
+			} else {
+				placex = Random.Range (0, hexSize);
+				placey = Random.Range (0, hexSize); 
+			}
+		}
+		playerObjects.get
+	}
+
 }

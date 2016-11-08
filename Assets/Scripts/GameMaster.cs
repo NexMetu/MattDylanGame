@@ -249,7 +249,7 @@ public class GameMaster : MonoBehaviour {
 				placey = Random.Range (0, hexSize); 
 			}
 		}
-		playerObjects.get
+	//	playerObjects.get
 	}
 
 }

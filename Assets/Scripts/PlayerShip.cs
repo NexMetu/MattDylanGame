@@ -8,17 +8,17 @@
 
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerShip : MonoBehaviour
 {
 	public int movement;
 	public int sight;
-	public Vector2 Location;
+	public int[] Location;
 
 	// Use this for initialization
 	void Start ()
 	{
-		
 	}
 	
 	// Update is called once per frame

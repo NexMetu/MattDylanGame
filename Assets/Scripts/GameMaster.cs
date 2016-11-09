@@ -7,6 +7,7 @@
 using UnityEngine;
 using System.Collections;
 
+
 public class GameMaster : MonoBehaviour {
 	//arrays that deal with the metadata of the hexgrid and Fog of war
 	public int [,] HexGrid;
@@ -63,43 +64,64 @@ public class GameMaster : MonoBehaviour {
 
 		//place the player onto the map
 		placePlayer();
-		//filltileinfo ();
+		filltileinfo ();
 		//sets the basic visablility to 0 on start up (fog should be all up)
+		print("just doing fog");
 		if (FogOfWarOn) {
 			for (int x = 0; x < hexSize; x++) {
 				for (int y = 0; y < hexSize; y++) {
-					if (!Tileinfo [x, y].InSight) {
-						FogGrid [x, y] = Instantiate (fog);
-						Vector3 xv = TileGrid [x, y];
-						FogGrid [x, y].position = xv;
-					}
+					print("got into fog script");
+					FogGrid [x, y] = Instantiate (fog);
+					Vector3 xv = TileGrid [x, y];
+					FogGrid [x, y].position = xv;
+
 				}
 			}
+			fogofwar ();
 		}
 	}
 	// Update is called once per frame
 	void Update () {
+		if (FogOfWarOn) {
+			fogofwar ();
+		}
 
 	}
     
 	//used in Update to make sure that 
     void fogofwar()
     {
-        for (int x = 0; x < hexSize; x++)
-        {
-            for (int y = 0; y < hexSize; y++)
-            {
-                if (visable[x, y] == 0)
-                {
-					FogGrid [x, y].GetComponent<SpriteRenderer> ().sprite = fogs; 
-				}else if (visable[x,y] == 1){
-					FogGrid [x, y].GetComponent<SpriteRenderer> ().sprite = OoS;
-				}else{
-					FogGrid [x, y].GetComponent<SpriteRenderer> ().enabled = false;
+   		if (playerObjects.Length != 0) {
+			int sightrange = playerObjects [0].transform.GetComponent<PlayerShip> ().sight;
+			print (sightrange);
+			int x = playerObjects [0].transform.GetComponent<PlayerShip> ().Location[0];
+			int y = playerObjects [0].transform.GetComponent<PlayerShip> ().Location[1];
+			for (int x1 = x - sightrange; x1 <= x + sightrange; x1++) {
+				if (x1 >= 0 && x1 < hexSize) {
+					for (int y1 = y - sightrange; y1 <= y + sightrange; y1++) {
+						//&& (x1 - x != Mathf.Abs(sightrange) && y1 - y != Mathf.Abs(sightrange))
+						if (y1 >= 0 && y1 < hexSize ) {
+							print (x1);
+							print (y1);
+							print (Tileinfo [x1, y1]);
+							Tileinfo [x1, y1].seen = true;
+							Tileinfo [x1, y1].InSight = true;
+						}
+					}
 				}
-
-            }
-        }
+			}
+		}
+		for (int x = 0; x < hexSize; x++) {
+			for (int y = 0; y < hexSize; y++) {
+				if (Tileinfo [x, y].InSight) {
+					FogGrid [x, y].GetComponent<SpriteRenderer> ().enabled = false; 
+				} else if (Tileinfo [x, y].seen) {
+					FogGrid [x, y].GetComponent<SpriteRenderer> ().sprite = OoS;
+				} else {
+					FogGrid [x, y].GetComponent<SpriteRenderer> ().sprite = fogs;
+				}
+			}
+	    }
 	}
 
 	// Fill Hex with integer values that will correspond to map tiles
@@ -246,8 +268,9 @@ public class GameMaster : MonoBehaviour {
 		while (!placed) {
 			if (HexGrid [placex, placey] != 2) {
 				Transform Playership = Instantiate (playershipspawn);
-				Playership.GetComponent<PlayerShip> ().Location.x = placex;
-				Playership.GetComponent<PlayerShip> ().Location.y = placey;
+				Playership.GetComponent<PlayerShip> ().Location = new int[2];
+				Playership.GetComponent<PlayerShip> ().Location[0] = placex;
+				Playership.GetComponent<PlayerShip> ().Location[1] = placey;
 				Vector3 xy = TileGrid [placex, placey];
 				xy.x -= 0.07f;
 				xy.y += 0.03999f;
@@ -263,7 +286,7 @@ public class GameMaster : MonoBehaviour {
 
 	}
 
-/*
+
 	void filltileinfo(){
 		for (int x = 0; x < hexSize; x++) {
 			for (int y = 0; y < hexSize; y++) {
@@ -274,24 +297,15 @@ public class GameMaster : MonoBehaviour {
 				if (HexGrid [x, y] != 2)
 					Tileinfo [x, y].traversable = true;
 				Tileinfo [x, y].resources = new GameResource [2];
-				if (playerObjects [0].GetComponent<PlayerShip> ().Location.x == x && playerObjects [0].GetComponent<PlayerShip> ().Location.y == y)
+				if (playerObjects [0].GetComponent<PlayerShip> ().Location[0] == x && playerObjects [0].GetComponent<PlayerShip> ().Location[1] == y)
 					Tileinfo [x, y].player = true; //this needs to be changed when the player can have multiply ships
 			}
 		}
-		int sightrange = playerObjects [0].transform.GetComponent<PlayerShip> ().sight;
-		for (int x1 = x - sightrange; x1 <= x + sightrange; x1++) {
-			if (x1 >= 0 && x1 < hexSize) {
-				for (int y1 = y - sightrange; y1 <= y + sightrange; y1++) {
-					if (y1 >= 0 && y1 < hexSize) {
-						Tileinfo [x, y].seen = true;
-						Tileinfo [x, y].InSight = true;
-					}
-				}
-			}
-		}
+
+
 	}
-				
-*/			
+
+		
 		
 	
 }

@@ -5,8 +5,8 @@ public class cameraController : MonoBehaviour {
 
 	public float speed = 50f;
 
-	public float minFOV = 15f;
-	public float maxFOV = 150f;
+	//public float minFOV = 15f;
+	//public float maxFOV = 150f;
 	public float sensitivity = 50f;
 
 	// Use this for initialization
@@ -16,11 +16,15 @@ public class cameraController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		/*
 		float FOV = Camera.main.fieldOfView;
 		FOV += Input.GetAxis ("Mouse ScrollWheel") * -sensitivity;
 		FOV = Mathf.Clamp (FOV, minFOV, maxFOV);
 		Camera.main.fieldOfView = FOV;
+*/
+		Vector3 newPos = this.transform.position;
+		newPos.z += Input.GetAxis ("Mouse ScrollWheel") * sensitivity;
+		this.transform.position = newPos;
 
 
 	}

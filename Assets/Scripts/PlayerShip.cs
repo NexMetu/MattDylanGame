@@ -13,12 +13,12 @@ public class PlayerShip : MonoBehaviour
 {
 	public int movement;
 	public int sight;
-	public int[,] Location;
+	public Vector2 Location;
 
 	// Use this for initialization
 	void Start ()
 	{
-		sight = movement + 1;
+		
 	}
 	
 	// Update is called once per frame

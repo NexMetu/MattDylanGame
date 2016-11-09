@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Proto.unity
+- path: Assets/Scenes/Dylans.unity
   isLoaded: 1
   isActive: 1

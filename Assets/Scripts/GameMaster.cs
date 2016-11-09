@@ -261,8 +261,6 @@ public class GameMaster : MonoBehaviour {
 			}
 		}
 
-		//playerObjects.get
-
 	}
 
 /*

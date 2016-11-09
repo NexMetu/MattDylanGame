@@ -63,7 +63,7 @@ public class GameMaster : MonoBehaviour {
 
 		//place the player onto the map
 		placePlayer();
-		filltileinfo ();
+		//filltileinfo ();
 		//sets the basic visablility to 0 on start up (fog should be all up)
 		if (FogOfWarOn) {
 			for (int x = 0; x < hexSize; x++) {
@@ -260,14 +260,12 @@ public class GameMaster : MonoBehaviour {
 				placey = Random.Range (0, hexSize); 
 			}
 		}
-<<<<<<< HEAD
+
 		//playerObjects.get
-=======
-	//	playerObjects.get
->>>>>>> origin/master
+
 	}
 
-
+/*
 	void filltileinfo(){
 		for (int x = 0; x < hexSize; x++) {
 			for (int y = 0; y < hexSize; y++) {
@@ -293,9 +291,9 @@ public class GameMaster : MonoBehaviour {
 				}
 			}
 		}
-						}
+	}
 				
-			
+*/			
 		
 	
 }

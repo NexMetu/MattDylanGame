@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: 2b9873a1c8e97a94c9245a08fd07108b
-timeCreated: 1469315628
+timeCreated: 1478638622
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playershipspawn: {instanceID: 0}
+  - fog: {instanceID: 0}
+  - fogs: {fileID: 21300000, guid: 15b1da4a8d6f5b44e912089526cf57f7, type: 3}
+  - OoS: {fileID: 21300000, guid: 2459f0085eb531e48aed4c216d1cdcdd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

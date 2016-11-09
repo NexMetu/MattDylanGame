@@ -1,27 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hex : MonoBehaviour {
-	//this is to show fog of war; 0 havnt seen the tile yet, 1 seen but not currently in sight, 2 in sight range of the player
-	public int visablility;
-	public Sprite fog;
-	public Sprite tile;
-	public Sprite explored;
-	public SpriteRenderer SprRen;
+public class Hex {
+	//if the player can move a unit throught this tile
+	public bool traversable = false;
+	//if an event is possiable to happen on moving onto this tile
+	public bool Event = false; //need to change this when i get events up and running @Matt
+	//if any resources are located on this tile
+	public GameResource[] resources;
+	//if there rescue boat/small boats to check
+	public bool boatcheck = false; //need to change this once i have the boat moving and need it to collect resources etc
+	//if this tile has been seen by the player
+	public bool seen = false;
+	//if the player is on that tile
+	public bool player = false;
+	//if this tile is in sight of the player this turn;
+	public bool InSight = false;
 
+	 
 	// Use this for initialization
 	void Start () {
-		visablility = 0;
-		tile = GetComponent<SpriteRenderer>().sprite;
 	}
+
 	// Update is called once per frame
 	void Update () {
-		if (visablility == 0) {
-			GetComponent<SpriteRenderer> ().sprite = fog;
-		} else if (visablility == 1) {
-			GetComponent<SpriteRenderer> ().sprite = explored;
-		} else {
-			GetComponent<SpriteRenderer> ().sprite = tile;
-		}
 	}
 }

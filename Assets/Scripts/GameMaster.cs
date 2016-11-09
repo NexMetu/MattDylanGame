@@ -10,7 +10,7 @@ using System.Collections;
 public class GameMaster : MonoBehaviour {
 	//arrays that deal with the metadata of the hexgrid and Fog of war
 	public int [,] HexGrid;
-	public int[,] visable;
+	public int[,] visable; //this ends to be made into the tileinfo object
 
 	//arrays that store each time of the hexgrid and Fog of war
 	public Vector3[,] TileGrid;
@@ -30,9 +30,13 @@ public class GameMaster : MonoBehaviour {
 	public Sprite fogs; //havn't explored/seen yet
 	public Sprite OoS; //out of sight
     
+	//size of the game map
 	public int hexSize;
-
+	//Setting to turning fog on or off at the start of the game;
 	public bool FogOfWarOn = false;
+
+	//holds infomation on every tile
+	public Hex[,] Tileinfo;
 
 	//Values that set the number of islands to make; the max and min size of each island
 	public int numberOfIslands;
@@ -49,6 +53,8 @@ public class GameMaster : MonoBehaviour {
 		visable = new int [hexSize, hexSize];
 		TileGrid = new Vector3[hexSize, hexSize];
 		FogGrid = new Transform[hexSize, hexSize];
+		Tileinfo = new Hex[hexSize, hexSize];
+		playerObjects = new Transform[20];
 				// Fill Hex with integer values that will correspond to map tiles
 		FillHex ();
 
@@ -57,26 +63,23 @@ public class GameMaster : MonoBehaviour {
 
 		//place the player onto the map
 		placePlayer();
-
+		//filltileinfo ();
 		//sets the basic visablility to 0 on start up (fog should be all up)
 		if (FogOfWarOn) {
 			for (int x = 0; x < hexSize; x++) {
 				for (int y = 0; y < hexSize; y++) {
-					if(playerObjects[0].position.x == TileGrid[x,y].x)
-					visable [x, y] = 0;
-					FogGrid [x, y] = Instantiate (fog);
-					Vector3 xv = TileGrid [x, y];
-					FogGrid [x, y].position = xv;
-
+					if (!Tileinfo [x, y].InSight) {
+						FogGrid [x, y] = Instantiate (fog);
+						Vector3 xv = TileGrid [x, y];
+						FogGrid [x, y].position = xv;
 					}
+				}
 			}
 		}
 	}
 	// Update is called once per frame
 	void Update () {
-		if (FogOfWarOn) {
-			fogofwar ();
-		}
+
 	}
     
 	//used in Update to make sure that 
@@ -234,22 +237,61 @@ public class GameMaster : MonoBehaviour {
 
 
 	void placePlayer() {
-		int placex = Random.Range (0, hexSize);
-		int placey = Random.Range (0, hexSize);
+		//select a random hex and see if the player can be placed
+		int placex = Random.Range (0, hexSize-1);
+		int placey = Random.Range (0, hexSize-1);
+		print (placex);
+		print (placey);
 		bool placed = false;
 		while (!placed) {
 			if (HexGrid [placex, placey] != 2) {
-				Transform PlayerShip = Instantiate (playershipspawn);
+				Transform Playership = Instantiate (playershipspawn);
+				Playership.GetComponent<PlayerShip> ().Location.x = placex;
+				Playership.GetComponent<PlayerShip> ().Location.y = placey;
 				Vector3 xy = TileGrid [placex, placey];
-				PlayerShip.transform.Translate (xy);
-				playerObjects [0] = PlayerShip;
+				xy.x -= 0.07f;
+				xy.y += 0.03999f;
+				Playership.transform.Translate (xy);
+				playerObjects [0] = Playership;
 				placed = true;
 			} else {
+				//if not a sea tile then selected another tile
 				placex = Random.Range (0, hexSize);
 				placey = Random.Range (0, hexSize); 
 			}
 		}
-	//	playerObjects.get
+
 	}
 
+/*
+	void filltileinfo(){
+		for (int x = 0; x < hexSize; x++) {
+			for (int y = 0; y < hexSize; y++) {
+				Hex hex = new Hex ();
+				print (hex);
+				Tileinfo [x, y] = hex;
+				print (Tileinfo [x, y]);
+				if (HexGrid [x, y] != 2)
+					Tileinfo [x, y].traversable = true;
+				Tileinfo [x, y].resources = new GameResource [2];
+				if (playerObjects [0].GetComponent<PlayerShip> ().Location.x == x && playerObjects [0].GetComponent<PlayerShip> ().Location.y == y)
+					Tileinfo [x, y].player = true; //this needs to be changed when the player can have multiply ships
+			}
+		}
+		int sightrange = playerObjects [0].transform.GetComponent<PlayerShip> ().sight;
+		for (int x1 = x - sightrange; x1 <= x + sightrange; x1++) {
+			if (x1 >= 0 && x1 < hexSize) {
+				for (int y1 = y - sightrange; y1 <= y + sightrange; y1++) {
+					if (y1 >= 0 && y1 < hexSize) {
+						Tileinfo [x, y].seen = true;
+						Tileinfo [x, y].InSight = true;
+					}
+				}
+			}
+		}
+	}
+				
+*/			
+		
+	
 }
